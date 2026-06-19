@@ -34,7 +34,23 @@ function UploadBox() {
           <p className="text-gray-700 mt-1">
             {file.name}
           </p>
+          {file && (
+
+  <div className="mt-6 bg-green-100 p-4 rounded-xl">
+
+    <p className="font-bold text-green-700">
+
+      ✅ Resume Uploaded Successfully
+
+    </p>
+
+    <p>{file.name}</p>
+
+  </div>
+
+)}
         </div>
+
       )}
 
     </div>

@@ -1,6 +1,11 @@
 const express = require("express");
 const cors = require("cors");
+require("dotenv").config();
+
+const connectDB = require("./config/db");
 const resumeRoutes = require("./routes/resumeRoutes");
+
+connectDB();
 
 const app = express();
 
@@ -10,21 +15,14 @@ app.use(express.json());
 app.use("/api/resume", resumeRoutes);
 
 app.get("/", (req, res) => {
-  res.json({
-    message: "Campus Placement Copilot API Running"
-  });
+    res.json({
+        success: true,
+        message: "Campus Placement Copilot API Running"
+    });
 });
 
-app.post("/api/ai", (req, res) => {
-  const { message } = req.body;
-
-  res.json({
-    reply: "AI Response: " + message
-  });
-});
-
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+    console.log(`🚀 Server running on http://localhost:${PORT}`);
 });
